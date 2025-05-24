@@ -1,0 +1,1187 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导出的桑基图</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    <style>
+        body { 
+            margin: 0; 
+            padding: 0; 
+            min-height: 100vh; 
+            background-color: #f8f9fa; 
+        }
+        #exported-sankey-chart {
+            width: 100vw;
+            height: 2000px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div id="exported-sankey-chart"></div>
+    <script>
+        const chartOption = {
+  "title": {
+    "text": "岗职位梳理方案",
+    "left": "center"
+  },
+  "tooltip": {
+    "trigger": "item",
+    "triggerOn": "mousemove"
+  },
+  "series": [
+    {
+      "type": "sankey",
+      "data": [
+        {
+          "name": "【旧职位】TV系统软件工程师",
+          "value": 64,
+          "originalName": "【旧职位】TV系统软件工程师"
+        },
+        {
+          "name": "【新岗位】系统软件工程师",
+          "value": 228,
+          "originalName": "【新岗位】系统软件工程师"
+        },
+        {
+          "name": "【子族】系统软件",
+          "value": 368,
+          "originalName": "【子族】系统软件"
+        },
+        {
+          "name": "【大族】T族-软件类",
+          "value": 1065,
+          "originalName": "【大族】T族-软件类"
+        },
+        {
+          "name": "【旧职位】安卓应用软件工程师",
+          "value": 88,
+          "originalName": "【旧职位】安卓应用软件工程师"
+        },
+        {
+          "name": "【新岗位】安卓应用软件工程师",
+          "value": 95,
+          "originalName": "【新岗位】安卓应用软件工程师"
+        },
+        {
+          "name": "【子族】应用软件",
+          "value": 437,
+          "originalName": "【子族】应用软件"
+        },
+        {
+          "name": "【旧职位】嵌入式系统软件工程师",
+          "value": 179,
+          "originalName": "【旧职位】嵌入式系统软件工程师"
+        },
+        {
+          "name": "【新岗位】电源嵌入式软件工程师",
+          "value": 23,
+          "originalName": "【新岗位】电源嵌入式软件工程师"
+        },
+        {
+          "name": "【子族】嵌入式软件",
+          "value": 141,
+          "originalName": "【子族】嵌入式软件"
+        },
+        {
+          "name": "【新岗位】嵌入式软件工程师",
+          "value": 118,
+          "originalName": "【新岗位】嵌入式软件工程师"
+        },
+        {
+          "name": "【新岗位】电控软件工程师",
+          "value": 54,
+          "originalName": "【新岗位】电控软件工程师"
+        },
+        {
+          "name": "【旧职位】音视频开发工程师",
+          "value": 43,
+          "originalName": "【旧职位】音视频开发工程师"
+        },
+        {
+          "name": "【新岗位】音视频系统软件工程师",
+          "value": 50,
+          "originalName": "【新岗位】音视频系统软件工程师"
+        },
+        {
+          "name": "【旧职位】安卓系统软件工程师",
+          "value": 56,
+          "originalName": "【旧职位】安卓系统软件工程师"
+        },
+        {
+          "name": "【旧职位】软件技术支持工程师",
+          "value": 60,
+          "originalName": "【旧职位】软件技术支持工程师"
+        },
+        {
+          "name": "【新岗位】软件技术支持工程师",
+          "value": 61,
+          "originalName": "【新岗位】软件技术支持工程师"
+        },
+        {
+          "name": "【子族】技术支持",
+          "value": 61,
+          "originalName": "【子族】技术支持"
+        },
+        {
+          "name": "【旧职位】技术经理",
+          "value": 1,
+          "originalName": "【旧职位】技术经理"
+        },
+        {
+          "name": "【旧职位】系统软件工程师",
+          "value": 24,
+          "originalName": "【旧职位】系统软件工程师"
+        },
+        {
+          "name": "【旧职位】EC工程师",
+          "value": 1,
+          "originalName": "【旧职位】EC工程师"
+        },
+        {
+          "name": "【旧职位】web前端应用软件工程师",
+          "value": 92,
+          "originalName": "【旧职位】web前端应用软件工程师"
+        },
+        {
+          "name": "【新岗位】前端应用软件工程师",
+          "value": 103,
+          "originalName": "【新岗位】前端应用软件工程师"
+        },
+        {
+          "name": "【旧职位】算法工程师",
+          "value": 32,
+          "originalName": "【旧职位】算法工程师"
+        },
+        {
+          "name": "【新岗位】算法应用工程师",
+          "value": 34,
+          "originalName": "【新岗位】算法应用工程师"
+        },
+        {
+          "name": "【旧职位】BIOS工程师",
+          "value": 17,
+          "originalName": "【旧职位】BIOS工程师"
+        },
+        {
+          "name": "【新岗位】BIOS软件工程师",
+          "value": 17,
+          "originalName": "【新岗位】BIOS软件工程师"
+        },
+        {
+          "name": "【旧职位】DevOps开发工程师",
+          "value": 9,
+          "originalName": "【旧职位】DevOps开发工程师"
+        },
+        {
+          "name": "【新岗位】DevOps软件工程师",
+          "value": 16,
+          "originalName": "【新岗位】DevOps软件工程师"
+        },
+        {
+          "name": "【子族】配置管理",
+          "value": 16,
+          "originalName": "【子族】配置管理"
+        },
+        {
+          "name": "【旧职位】研究员",
+          "value": 33,
+          "originalName": "【旧职位】研究员"
+        },
+        {
+          "name": "【新岗位】研究员",
+          "value": 33,
+          "originalName": "【新岗位】研究员"
+        },
+        {
+          "name": "【子族】技术研究",
+          "value": 87,
+          "originalName": "【子族】技术研究"
+        },
+        {
+          "name": "【大族】T族-研究类",
+          "value": 87,
+          "originalName": "【大族】T族-研究类"
+        },
+        {
+          "name": "【旧职位】系统软件总工程师",
+          "value": 1,
+          "originalName": "【旧职位】系统软件总工程师"
+        },
+        {
+          "name": "【新岗位】系统软件总工程师",
+          "value": 1,
+          "originalName": "【新岗位】系统软件总工程师"
+        },
+        {
+          "name": "【旧职位】web后台应用软件工程师",
+          "value": 96,
+          "originalName": "【旧职位】web后台应用软件工程师"
+        },
+        {
+          "name": "【新岗位】后端应用软件工程师",
+          "value": 118,
+          "originalName": "【新岗位】后端应用软件工程师"
+        },
+        {
+          "name": "【旧职位】系统工程师",
+          "value": 2,
+          "originalName": "【旧职位】系统工程师"
+        },
+        {
+          "name": "【旧职位】系统软件副总工程师",
+          "value": 5,
+          "originalName": "【旧职位】系统软件副总工程师"
+        },
+        {
+          "name": "【新岗位】系统软件副总工程师",
+          "value": 14,
+          "originalName": "【新岗位】系统软件副总工程师"
+        },
+        {
+          "name": "【旧职位】副总经理",
+          "value": 5,
+          "originalName": "【旧职位】副总经理"
+        },
+        {
+          "name": "【旧职位】总监",
+          "value": 23,
+          "originalName": "【旧职位】总监"
+        },
+        {
+          "name": "【旧职位】C++软件工程师",
+          "value": 51,
+          "originalName": "【旧职位】C++软件工程师"
+        },
+        {
+          "name": "【新岗位】客户端应用软件工程师",
+          "value": 66,
+          "originalName": "【新岗位】客户端应用软件工程师"
+        },
+        {
+          "name": "【旧职位】Windows应用软件工程师",
+          "value": 17,
+          "originalName": "【旧职位】Windows应用软件工程师"
+        },
+        {
+          "name": "【旧职位】ISP工程师",
+          "value": 4,
+          "originalName": "【旧职位】ISP工程师"
+        },
+        {
+          "name": "【新岗位】PQ工程师",
+          "value": 4,
+          "originalName": "【新岗位】PQ工程师"
+        },
+        {
+          "name": "【旧职位】部门经理",
+          "value": 98,
+          "originalName": "【旧职位】部门经理"
+        },
+        {
+          "name": "【旧职位】应用软件工程师",
+          "value": 16,
+          "originalName": "【旧职位】应用软件工程师"
+        },
+        {
+          "name": "【旧职位】研发工程师",
+          "value": 16,
+          "originalName": "【旧职位】研发工程师"
+        },
+        {
+          "name": "【新岗位】研发工程师(非软件)",
+          "value": 16,
+          "originalName": "【新岗位】研发工程师(非软件)"
+        },
+        {
+          "name": "【子族】其它",
+          "value": 24,
+          "originalName": "【子族】其它"
+        },
+        {
+          "name": "【旧职位】应用软件总工程师",
+          "value": 2,
+          "originalName": "【旧职位】应用软件总工程师"
+        },
+        {
+          "name": "【新岗位】应用软件总工程师",
+          "value": 2,
+          "originalName": "【新岗位】应用软件总工程师"
+        },
+        {
+          "name": "【旧职位】大数据开发工程师",
+          "value": 5,
+          "originalName": "【旧职位】大数据开发工程师"
+        },
+        {
+          "name": "【新岗位】大数据开发工程师",
+          "value": 5,
+          "originalName": "【新岗位】大数据开发工程师"
+        },
+        {
+          "name": "【旧职位】高级总监",
+          "value": 1,
+          "originalName": "【旧职位】高级总监"
+        },
+        {
+          "name": "【旧职位】副总裁",
+          "value": 2,
+          "originalName": "【旧职位】副总裁"
+        },
+        {
+          "name": "【旧职位】副总工程师",
+          "value": 2,
+          "originalName": "【旧职位】副总工程师"
+        },
+        {
+          "name": "【旧职位】应用软件副总工程师",
+          "value": 9,
+          "originalName": "【旧职位】应用软件副总工程师"
+        },
+        {
+          "name": "【新岗位】应用软件副总工程师",
+          "value": 9,
+          "originalName": "【新岗位】应用软件副总工程师"
+        },
+        {
+          "name": "【旧职位】Web后台应用软件工程师",
+          "value": 1,
+          "originalName": "【旧职位】Web后台应用软件工程师"
+        },
+        {
+          "name": "【旧职位】软件质量工程师",
+          "value": 2,
+          "originalName": "【旧职位】软件质量工程师"
+        },
+        {
+          "name": "【新岗位】软件质量工程师",
+          "value": 2,
+          "originalName": "【新岗位】软件质量工程师"
+        },
+        {
+          "name": "【子族】软件质量",
+          "value": 2,
+          "originalName": "【子族】软件质量"
+        },
+        {
+          "name": "【旧职位】总工程师",
+          "value": 2,
+          "originalName": "【旧职位】总工程师"
+        },
+        {
+          "name": "【新岗位】总工程师",
+          "value": 2,
+          "originalName": "【新岗位】总工程师"
+        },
+        {
+          "name": "【新岗位】综合管理",
+          "value": 3,
+          "originalName": "【新岗位】综合管理"
+        },
+        {
+          "name": "【旧职位】助理研究员",
+          "value": 28,
+          "originalName": "【旧职位】助理研究员"
+        },
+        {
+          "name": "【旧职位】高级研究员",
+          "value": 28,
+          "originalName": "【旧职位】高级研究员"
+        },
+        {
+          "name": "【新岗位】高级研究员",
+          "value": 27,
+          "originalName": "【新岗位】高级研究员"
+        },
+        {
+          "name": "【旧职位】科学家",
+          "value": 2,
+          "originalName": "【旧职位】科学家"
+        },
+        {
+          "name": "【新岗位】科学家",
+          "value": 2,
+          "originalName": "【新岗位】科学家"
+        },
+        {
+          "name": "【旧职位】iOS应用软件工程师",
+          "value": 3,
+          "originalName": "【旧职位】iOS应用软件工程师"
+        },
+        {
+          "name": "【新岗位】iOS应用软件工程师",
+          "value": 3,
+          "originalName": "【新岗位】iOS应用软件工程师"
+        },
+        {
+          "name": "【新岗位】助理研究员",
+          "value": 25,
+          "originalName": "【新岗位】助理研究员"
+        },
+        {
+          "name": "【新岗位】产品经理",
+          "value": 1,
+          "originalName": "【新岗位】产品经理"
+        },
+        {
+          "name": "【旧职位】高级部门经理",
+          "value": 7,
+          "originalName": "【旧职位】高级部门经理"
+        },
+        {
+          "name": "【旧职位】协议工程师",
+          "value": 1,
+          "originalName": "【旧职位】协议工程师"
+        },
+        {
+          "name": "【新岗位】需求分析师",
+          "value": 2,
+          "originalName": "【新岗位】需求分析师"
+        },
+        {
+          "name": "【旧职位】嵌入式系统副总工程师",
+          "value": 1,
+          "originalName": "【旧职位】嵌入式系统副总工程师"
+        },
+        {
+          "name": "【旧职位】TV系统软件副总工程师",
+          "value": 4,
+          "originalName": "【旧职位】TV系统软件副总工程师"
+        },
+        {
+          "name": "【新岗位】IOS应用软件工程师",
+          "value": 2,
+          "originalName": "【新岗位】IOS应用软件工程师"
+        },
+        {
+          "name": "【旧职位】嵌入式软件副总工程师",
+          "value": 1,
+          "originalName": "【旧职位】嵌入式软件副总工程师"
+        },
+        {
+          "name": "【旧职位】IOS应用软件工程师",
+          "value": 1,
+          "originalName": "【旧职位】IOS应用软件工程师"
+        },
+        {
+          "name": "【旧职位】控制系统副总工程师",
+          "value": 1,
+          "originalName": "【旧职位】控制系统副总工程师"
+        },
+        {
+          "name": "【旧职位】信息安全工程师",
+          "value": 1,
+          "originalName": "【旧职位】信息安全工程师"
+        },
+        {
+          "name": "【新岗位】信息安全工程师",
+          "value": 1,
+          "originalName": "【新岗位】信息安全工程师"
+        },
+        {
+          "name": "【子族】信息安全",
+          "value": 1,
+          "originalName": "【子族】信息安全"
+        },
+        {
+          "name": "【旧职位】测试开发工程师",
+          "value": 15,
+          "originalName": "【旧职位】测试开发工程师"
+        },
+        {
+          "name": "【新岗位】测试开发软件工程师",
+          "value": 15,
+          "originalName": "【新岗位】测试开发软件工程师"
+        },
+        {
+          "name": "【子族】测试开发",
+          "value": 15,
+          "originalName": "【子族】测试开发"
+        }
+      ],
+      "links": [
+        {
+          "source": "【旧职位】TV系统软件工程师",
+          "target": "【新岗位】系统软件工程师",
+          "value": 64
+        },
+        {
+          "source": "【新岗位】系统软件工程师",
+          "target": "【子族】系统软件",
+          "value": 228
+        },
+        {
+          "source": "【子族】系统软件",
+          "target": "【大族】T族-软件类",
+          "value": 368
+        },
+        {
+          "source": "【旧职位】安卓应用软件工程师",
+          "target": "【新岗位】安卓应用软件工程师",
+          "value": 88
+        },
+        {
+          "source": "【新岗位】安卓应用软件工程师",
+          "target": "【子族】应用软件",
+          "value": 95
+        },
+        {
+          "source": "【子族】应用软件",
+          "target": "【大族】T族-软件类",
+          "value": 437
+        },
+        {
+          "source": "【旧职位】嵌入式系统软件工程师",
+          "target": "【新岗位】电源嵌入式软件工程师",
+          "value": 21
+        },
+        {
+          "source": "【新岗位】电源嵌入式软件工程师",
+          "target": "【子族】嵌入式软件",
+          "value": 23
+        },
+        {
+          "source": "【子族】嵌入式软件",
+          "target": "【大族】T族-软件类",
+          "value": 141
+        },
+        {
+          "source": "【旧职位】嵌入式系统软件工程师",
+          "target": "【新岗位】嵌入式软件工程师",
+          "value": 113
+        },
+        {
+          "source": "【新岗位】嵌入式软件工程师",
+          "target": "【子族】嵌入式软件",
+          "value": 118
+        },
+        {
+          "source": "【旧职位】嵌入式系统软件工程师",
+          "target": "【新岗位】电控软件工程师",
+          "value": 45
+        },
+        {
+          "source": "【新岗位】电控软件工程师",
+          "target": "【子族】系统软件",
+          "value": 54
+        },
+        {
+          "source": "【旧职位】音视频开发工程师",
+          "target": "【新岗位】音视频系统软件工程师",
+          "value": 43
+        },
+        {
+          "source": "【新岗位】音视频系统软件工程师",
+          "target": "【子族】系统软件",
+          "value": 50
+        },
+        {
+          "source": "【旧职位】安卓系统软件工程师",
+          "target": "【新岗位】系统软件工程师",
+          "value": 56
+        },
+        {
+          "source": "【旧职位】软件技术支持工程师",
+          "target": "【新岗位】软件技术支持工程师",
+          "value": 60
+        },
+        {
+          "source": "【新岗位】软件技术支持工程师",
+          "target": "【子族】技术支持",
+          "value": 61
+        },
+        {
+          "source": "【子族】技术支持",
+          "target": "【大族】T族-软件类",
+          "value": 61
+        },
+        {
+          "source": "【旧职位】技术经理",
+          "target": "【新岗位】电源嵌入式软件工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】系统软件工程师",
+          "target": "【新岗位】系统软件工程师",
+          "value": 24
+        },
+        {
+          "source": "【旧职位】EC工程师",
+          "target": "【新岗位】嵌入式软件工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】web前端应用软件工程师",
+          "target": "【新岗位】前端应用软件工程师",
+          "value": 91
+        },
+        {
+          "source": "【新岗位】前端应用软件工程师",
+          "target": "【子族】应用软件",
+          "value": 103
+        },
+        {
+          "source": "【旧职位】算法工程师",
+          "target": "【新岗位】算法应用工程师",
+          "value": 29
+        },
+        {
+          "source": "【新岗位】算法应用工程师",
+          "target": "【子族】应用软件",
+          "value": 34
+        },
+        {
+          "source": "【旧职位】BIOS工程师",
+          "target": "【新岗位】BIOS软件工程师",
+          "value": 17
+        },
+        {
+          "source": "【新岗位】BIOS软件工程师",
+          "target": "【子族】系统软件",
+          "value": 17
+        },
+        {
+          "source": "【旧职位】DevOps开发工程师",
+          "target": "【新岗位】DevOps软件工程师",
+          "value": 9
+        },
+        {
+          "source": "【新岗位】DevOps软件工程师",
+          "target": "【子族】配置管理",
+          "value": 16
+        },
+        {
+          "source": "【子族】配置管理",
+          "target": "【大族】T族-软件类",
+          "value": 16
+        },
+        {
+          "source": "【旧职位】研究员",
+          "target": "【新岗位】研究员",
+          "value": 33
+        },
+        {
+          "source": "【新岗位】研究员",
+          "target": "【子族】技术研究",
+          "value": 33
+        },
+        {
+          "source": "【子族】技术研究",
+          "target": "【大族】T族-研究类",
+          "value": 87
+        },
+        {
+          "source": "【旧职位】系统软件总工程师",
+          "target": "【新岗位】系统软件总工程师",
+          "value": 1
+        },
+        {
+          "source": "【新岗位】系统软件总工程师",
+          "target": "【子族】系统软件",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】web后台应用软件工程师",
+          "target": "【新岗位】后端应用软件工程师",
+          "value": 90
+        },
+        {
+          "source": "【新岗位】后端应用软件工程师",
+          "target": "【子族】应用软件",
+          "value": 118
+        },
+        {
+          "source": "【旧职位】系统工程师",
+          "target": "【新岗位】系统软件工程师",
+          "value": 2
+        },
+        {
+          "source": "【旧职位】系统软件副总工程师",
+          "target": "【新岗位】系统软件副总工程师",
+          "value": 5
+        },
+        {
+          "source": "【新岗位】系统软件副总工程师",
+          "target": "【子族】系统软件",
+          "value": 14
+        },
+        {
+          "source": "【旧职位】副总经理",
+          "target": "【新岗位】系统软件工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】总监",
+          "target": "【新岗位】系统软件工程师",
+          "value": 15
+        },
+        {
+          "source": "【旧职位】C++软件工程师",
+          "target": "【新岗位】客户端应用软件工程师",
+          "value": 22
+        },
+        {
+          "source": "【新岗位】客户端应用软件工程师",
+          "target": "【子族】应用软件",
+          "value": 66
+        },
+        {
+          "source": "【旧职位】C++软件工程师",
+          "target": "【新岗位】系统软件工程师",
+          "value": 22
+        },
+        {
+          "source": "【旧职位】C++软件工程师",
+          "target": "【新岗位】后端应用软件工程师",
+          "value": 6
+        },
+        {
+          "source": "【旧职位】Windows应用软件工程师",
+          "target": "【新岗位】客户端应用软件工程师",
+          "value": 17
+        },
+        {
+          "source": "【旧职位】ISP工程师",
+          "target": "【新岗位】PQ工程师",
+          "value": 4
+        },
+        {
+          "source": "【新岗位】PQ工程师",
+          "target": "【子族】系统软件",
+          "value": 4
+        },
+        {
+          "source": "【旧职位】部门经理",
+          "target": "【新岗位】系统软件工程师",
+          "value": 42
+        },
+        {
+          "source": "【旧职位】应用软件工程师",
+          "target": "【新岗位】客户端应用软件工程师",
+          "value": 14
+        },
+        {
+          "source": "【旧职位】研发工程师",
+          "target": "【新岗位】研发工程师(非软件)",
+          "value": 16
+        },
+        {
+          "source": "【新岗位】研发工程师(非软件)",
+          "target": "【子族】其它",
+          "value": 16
+        },
+        {
+          "source": "【子族】其它",
+          "target": "【大族】T族-软件类",
+          "value": 24
+        },
+        {
+          "source": "【旧职位】应用软件总工程师",
+          "target": "【新岗位】应用软件总工程师",
+          "value": 2
+        },
+        {
+          "source": "【新岗位】应用软件总工程师",
+          "target": "【子族】应用软件",
+          "value": 2
+        },
+        {
+          "source": "【旧职位】部门经理",
+          "target": "【新岗位】电控软件工程师",
+          "value": 5
+        },
+        {
+          "source": "【旧职位】大数据开发工程师",
+          "target": "【新岗位】大数据开发工程师",
+          "value": 5
+        },
+        {
+          "source": "【新岗位】大数据开发工程师",
+          "target": "【子族】应用软件",
+          "value": 5
+        },
+        {
+          "source": "【旧职位】高级总监",
+          "target": "【新岗位】系统软件工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】副总裁",
+          "target": "【新岗位】系统软件工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】副总裁",
+          "target": "【新岗位】嵌入式软件工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】部门经理",
+          "target": "【新岗位】后端应用软件工程师",
+          "value": 14
+        },
+        {
+          "source": "【旧职位】部门经理",
+          "target": "【新岗位】音视频系统软件工程师",
+          "value": 6
+        },
+        {
+          "source": "【旧职位】副总工程师",
+          "target": "【新岗位】系统软件副总工程师",
+          "value": 2
+        },
+        {
+          "source": "【旧职位】web前端应用软件工程师",
+          "target": "【新岗位】DevOps软件工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】部门经理",
+          "target": "【新岗位】电源嵌入式软件工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】总监",
+          "target": "【新岗位】软件技术支持工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】副总经理",
+          "target": "【新岗位】后端应用软件工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】应用软件副总工程师",
+          "target": "【新岗位】应用软件副总工程师",
+          "value": 9
+        },
+        {
+          "source": "【新岗位】应用软件副总工程师",
+          "target": "【子族】应用软件",
+          "value": 9
+        },
+        {
+          "source": "【旧职位】总监",
+          "target": "【新岗位】音视频系统软件工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】算法工程师",
+          "target": "【新岗位】电控软件工程师",
+          "value": 3
+        },
+        {
+          "source": "【旧职位】web后台应用软件工程师",
+          "target": "【新岗位】DevOps软件工程师",
+          "value": 5
+        },
+        {
+          "source": "【旧职位】Web后台应用软件工程师",
+          "target": "【新岗位】后端应用软件工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】软件质量工程师",
+          "target": "【新岗位】软件质量工程师",
+          "value": 2
+        },
+        {
+          "source": "【新岗位】软件质量工程师",
+          "target": "【子族】软件质量",
+          "value": 2
+        },
+        {
+          "source": "【子族】软件质量",
+          "target": "【大族】T族-软件类",
+          "value": 2
+        },
+        {
+          "source": "【旧职位】部门经理",
+          "target": "【新岗位】安卓应用软件工程师",
+          "value": 5
+        },
+        {
+          "source": "【旧职位】总工程师",
+          "target": "【新岗位】总工程师",
+          "value": 2
+        },
+        {
+          "source": "【新岗位】总工程师",
+          "target": "【子族】其它",
+          "value": 2
+        },
+        {
+          "source": "【旧职位】部门经理",
+          "target": "【新岗位】综合管理",
+          "value": 1
+        },
+        {
+          "source": "【新岗位】综合管理",
+          "target": "【子族】其它",
+          "value": 3
+        },
+        {
+          "source": "【旧职位】总监",
+          "target": "【新岗位】算法应用工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】助理研究员",
+          "target": "【新岗位】算法应用工程师",
+          "value": 3
+        },
+        {
+          "source": "【旧职位】高级研究员",
+          "target": "【新岗位】高级研究员",
+          "value": 27
+        },
+        {
+          "source": "【新岗位】高级研究员",
+          "target": "【子族】技术研究",
+          "value": 27
+        },
+        {
+          "source": "【旧职位】科学家",
+          "target": "【新岗位】科学家",
+          "value": 2
+        },
+        {
+          "source": "【新岗位】科学家",
+          "target": "【子族】技术研究",
+          "value": 2
+        },
+        {
+          "source": "【旧职位】副总经理",
+          "target": "【新岗位】综合管理",
+          "value": 2
+        },
+        {
+          "source": "【旧职位】部门经理",
+          "target": "【新岗位】客户端应用软件工程师",
+          "value": 8
+        },
+        {
+          "source": "【旧职位】iOS应用软件工程师",
+          "target": "【新岗位】iOS应用软件工程师",
+          "value": 3
+        },
+        {
+          "source": "【新岗位】iOS应用软件工程师",
+          "target": "【子族】应用软件",
+          "value": 3
+        },
+        {
+          "source": "【旧职位】助理研究员",
+          "target": "【新岗位】助理研究员",
+          "value": 25
+        },
+        {
+          "source": "【新岗位】助理研究员",
+          "target": "【子族】技术研究",
+          "value": 25
+        },
+        {
+          "source": "【旧职位】高级研究员",
+          "target": "【新岗位】后端应用软件工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】应用软件工程师",
+          "target": "【新岗位】安卓应用软件工程师",
+          "value": 2
+        },
+        {
+          "source": "【旧职位】总监",
+          "target": "【新岗位】前端应用软件工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】副总经理",
+          "target": "【新岗位】产品经理",
+          "value": 1
+        },
+        {
+          "source": "【新岗位】产品经理",
+          "target": "【子族】其它",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】部门经理",
+          "target": "【新岗位】前端应用软件工程师",
+          "value": 11
+        },
+        {
+          "source": "【旧职位】总监",
+          "target": "【新岗位】客户端应用软件工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】高级部门经理",
+          "target": "【新岗位】后端应用软件工程师",
+          "value": 3
+        },
+        {
+          "source": "【旧职位】C++软件工程师",
+          "target": "【新岗位】算法应用工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】总监",
+          "target": "【新岗位】后端应用软件工程师",
+          "value": 2
+        },
+        {
+          "source": "【旧职位】协议工程师",
+          "target": "【新岗位】嵌入式软件工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】高级部门经理",
+          "target": "【新岗位】需求分析师",
+          "value": 1
+        },
+        {
+          "source": "【新岗位】需求分析师",
+          "target": "【子族】其它",
+          "value": 2
+        },
+        {
+          "source": "【旧职位】嵌入式系统副总工程师",
+          "target": "【新岗位】系统软件副总工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】部门经理",
+          "target": "【新岗位】嵌入式软件工程师",
+          "value": 2
+        },
+        {
+          "source": "【旧职位】总监",
+          "target": "【新岗位】电控软件工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】部门经理",
+          "target": "【新岗位】DevOps软件工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】TV系统软件副总工程师",
+          "target": "【新岗位】系统软件副总工程师",
+          "value": 4
+        },
+        {
+          "source": "【旧职位】高级部门经理",
+          "target": "【新岗位】客户端应用软件工程师",
+          "value": 3
+        },
+        {
+          "source": "【旧职位】部门经理",
+          "target": "【新岗位】IOS应用软件工程师",
+          "value": 1
+        },
+        {
+          "source": "【新岗位】IOS应用软件工程师",
+          "target": "【子族】应用软件",
+          "value": 2
+        },
+        {
+          "source": "【旧职位】嵌入式软件副总工程师",
+          "target": "【新岗位】系统软件副总工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】web后台应用软件工程师",
+          "target": "【新岗位】客户端应用软件工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】部门经理",
+          "target": "【新岗位】需求分析师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】IOS应用软件工程师",
+          "target": "【新岗位】IOS应用软件工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】控制系统副总工程师",
+          "target": "【新岗位】系统软件副总工程师",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】信息安全工程师",
+          "target": "【新岗位】信息安全工程师",
+          "value": 1
+        },
+        {
+          "source": "【新岗位】信息安全工程师",
+          "target": "【子族】信息安全",
+          "value": 1
+        },
+        {
+          "source": "【子族】信息安全",
+          "target": "【大族】T族-软件类",
+          "value": 1
+        },
+        {
+          "source": "【旧职位】测试开发工程师",
+          "target": "【新岗位】测试开发软件工程师",
+          "value": 15
+        },
+        {
+          "source": "【新岗位】测试开发软件工程师",
+          "target": "【子族】测试开发",
+          "value": 15
+        },
+        {
+          "source": "【子族】测试开发",
+          "target": "【大族】T族-软件类",
+          "value": 15
+        }
+      ],
+      "emphasis": {
+        "focus": "adjacency"
+      },
+      "lineStyle": {
+        "color": "gradient",
+        "curveness": 0.5
+      },
+      "label": {
+        "show": true,
+        "position": "right"
+      },
+      "orient": "horizontal",
+      "nodeWidth": 30,
+      "nodeGap": 8,
+      "layoutIterations": 32,
+      "tooltip": {}
+    }
+  ]
+};
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const exportedChartDom = document.getElementById('exported-sankey-chart');
+            if (exportedChartDom && typeof echarts !== 'undefined') {
+                const myExportedChart = echarts.init(exportedChartDom);
+                myExportedChart.setOption(chartOption);
+                window.addEventListener('resize', function() {
+                    myExportedChart.resize();
+                });
+            } else {
+                if (!exportedChartDom) console.error('图表容器未找到。');
+                if (typeof echarts === 'undefined') console.error('ECharts 未加载。');
+                document.body.innerHTML = '<p style="color:red; text-align:center; font-size:1.5em; margin-top: 50px;">无法加载图表。</p>';
+            }
+        });
+    </script>
+</body>
+</html>
